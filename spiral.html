@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spiral Model - Disk Scheduling Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #333, #2c3e50);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: #2c3e50;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h2 {
+      font-size: 1.5rem;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .navbar ul li a:hover,
+    .navbar ul li a.active {
+      text-decoration: underline;
+      color: #1abc9c;
+    }
+
+    .container {
+      max-width: 800px;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    p, ul li {
+      line-height: 1.6;
+    }
+
+    .phase {
+      margin-top: 30px;
+    }
+
+    .phase h2 {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .phase ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .phase ul li::before {
+      content: "✔ ";
+      color: green;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        max-width: 90%;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .phase h2 {
+        font-size: 1.1rem;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar ul {
+        margin-top: 10px;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <h2>Disk Scheduling Visualizer</h2>
+    <ul>
+      <li><a href="entry.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="index.html" class="active">Visualizer</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Spiral Model - Project Development</h1>
+    <p>
+      The Spiral Model integrates iterative development with structured phases from the Waterfall model, emphasizing continuous risk analysis and refinement. The following outlines how our <strong>Disk Scheduling Algorithm Visualizer</strong> was developed using this methodology:
+    </p>
+
+    <!-- Phase 1 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-magnifying-glass-chart"></i> 1. Planning & Requirement Gathering</h2>
+      <p>During the initial phase, we defined objectives and gathered comprehensive requirements, focusing on:</p>
+      <ul>
+        <li>Accepting disk I/O requests and an initial head position</li>
+        <li>Providing a selection of disk scheduling algorithms (FCFS, SSTF, SCAN, LOOK, etc.)</li>
+        <li>Delivering output metrics such as total seek time and head movement order</li>
+      </ul>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-triangle-exclamation"></i> 2. Risk Analysis & Prototype Design</h2>
+      <p>We assessed potential technical risks and created low-fidelity prototypes to validate core concepts:</p>
+      <ul>
+        <li>Explored animation strategies for visualizing head movement</li>
+        <li>Identified challenges related to dynamic and real-time visualization</li>
+        <li>Developed basic UI mockups for stakeholder review</li>
+      </ul>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-gears"></i> 3. Development & First Iteration</h2>
+      <p>The first iteration focused on implementing core functionality based on gathered requirements:</p>
+      <ul>
+        <li>Designed a responsive UI using HTML and CSS</li>
+        <li>Developed initial JavaScript modules for FCFS and SSTF algorithms</li>
+        <li>Introduced a basic canvas-based visualization for disk head movement</li>
+      </ul>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-rotate"></i> 4. Evaluation & Refinement</h2>
+      <p>Following each iteration, we incorporated feedback and enhanced the system for better performance:</p>
+      <ul>
+        <li>Added support for additional algorithms like SCAN and LOOK</li>
+        <li>Improved animation for smoother transitions</li>
+        <li>Strengthened input validation and error handling</li>
+      </ul>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-rocket"></i> 5. Further Iterations & Final Deployment</h2>
+      <p>In the final phase, we focused on optimization and deployment readiness:</p>
+      <ul>
+        <li>Conducted comprehensive responsiveness and cross-device testing</li>
+        <li>Resolved bugs identified during extensive test cases</li>
+        <li>Published the project on GitHub and prepared for live deployment</li>
+      </ul>
+    </div>
+
+    <!-- Phase 6 -->
+    <div class="phase">
+      <h2><i class="fa-solid fa-toolbox"></i> 6. Maintenance & Future Enhancements</h2>
+      <p>Post-deployment, the Spiral Model supports ongoing maintenance and continuous improvement:</p>
+      <ul>
+        <li>Gathered user feedback to plan upcoming features</li>
+        <li>Outlined potential algorithm additions and UI improvements</li>
+        <li>Maintained modular code architecture for future scalability</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

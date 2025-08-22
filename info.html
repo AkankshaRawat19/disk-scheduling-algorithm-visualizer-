@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About Disk Scheduling Algorithms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #333, #2c3e50);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background: #2c3e50;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #34495e;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        .back-button:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            p, li {
+                font-size: 0.9rem;
+            }
+            .back-button {
+                width: 150px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Learn About Disk Scheduling Algorithms</h1>
+
+        <h2>What is Disk Scheduling?</h2>
+        <p>
+            Disk scheduling refers to the method of determining the sequence in which disk I/O (Input/Output) requests are serviced by the disk controller. 
+            Its primary objective is to minimize seek time—the time required for the disk head to move to the desired track—and enhance overall system performance. 
+            Different algorithms address this challenge by balancing efficiency, fairness, and implementation complexity.
+        </p>
+
+        <h2>1. FCFS (First Come, First Serve)</h2>
+        <p>
+            FCFS is the most basic disk scheduling algorithm, where requests are processed in the order they arrive in the queue.
+        </p>
+        <ul>
+            <li><strong>How it works:</strong> The disk head services each request sequentially based on arrival order.</li>
+            <li><strong>Advantages:</strong> Simple to implement and ensures fairness by serving requests in order.</li>
+            <li><strong>Disadvantages:</strong> Can lead to high seek times if requests are located far apart, resulting in inefficient head movement.</li>
+            <li><strong>Example:</strong> If the head starts at 53 and requests are [98, 183, 37, 122], the movement will be 53 → 98 → 183 → 37 → 122, causing significant seek time.</li>
+        </ul>
+
+        <h2>2. SSTF (Shortest Seek Time First)</h2>
+        <p>
+            SSTF prioritizes the request that is closest to the current head position, thereby reducing seek time at each step.
+        </p>
+        <ul>
+            <li><strong>How it works:</strong> The algorithm selects the nearest pending request from the current head position and continues until all requests are completed.</li>
+            <li><strong>Advantages:</strong> Typically results in lower average seek time compared to FCFS.</li>
+            <li><strong>Disadvantages:</strong> May cause starvation for requests that are far from the current head position.</li>
+            <li><strong>Example:</strong> With head at 53 and requests [98, 183, 37, 122], the order might be 53 → 37 → 98 → 122 → 183, reducing total head movement.</li>
+        </ul>
+
+        <h2>3. SCAN (Elevator Algorithm)</h2>
+        <p>
+            SCAN moves the disk head in a fixed direction (toward higher or lower tracks), servicing all requests along the way, and then reverses direction.
+        </p>
+        <ul>
+            <li><strong>How it works:</strong> The head services all requests in one direction before reversing to handle pending requests in the opposite direction.</li>
+            <li><strong>Advantages:</strong> More efficient than FCFS and helps prevent starvation.</li>
+            <li><strong>Disadvantages:</strong> Requests at the extremes may experience longer wait times.</li>
+            <li><strong>Example:</strong> Starting at 53 and moving upward with requests [98, 183, 37, 122], the head travels 53 → 98 → 122 → 183, then reverses to 37.</li>
+        </ul>
+
+        <h2>4. C-SCAN (Circular SCAN)</h2>
+        <p>
+            C-SCAN is a variation of SCAN where the head moves in a single direction only. Once it reaches the end, it returns to the beginning without servicing requests during the return.
+        </p>
+        <ul>
+            <li><strong>How it works:</strong> The head moves in one direction, services requests, then jumps back to the starting point and repeats in the same direction.</li>
+            <li><strong>Advantages:</strong> Provides more uniform wait times by treating the disk as a circular track.</li>
+            <li><strong>Disadvantages:</strong> Slightly higher seek time due to the return jump.</li>
+            <li><strong>Example:</strong> Starting at 53 with requests [98, 183, 37, 122], the head travels 53 → 98 → 122 → 183 → (end) → 0 → 37.</li>
+        </ul>
+
+        <h2>5. LOOK</h2>
+        <p>
+            LOOK is an optimized version of SCAN that avoids unnecessary movement to the disk ends by reversing direction at the last pending request.
+        </p>
+        <ul>
+            <li><strong>How it works:</strong> The head moves in one direction until there are no further requests in that direction, then reverses.</li>
+            <li><strong>Advantages:</strong> More efficient than SCAN since it does not move to unused extremes.</li>
+            <li><strong>Disadvantages:</strong> Requests at the extremes may still wait longer than others.</li>
+            <li><strong>Example:</strong> Starting at 53 with requests [98, 183, 37, 122], the movement is 53 → 98 → 122 → 183, then reverse to 37 without reaching disk end.</li>
+        </ul>
+
+        <a href="entry.html" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>
