@@ -33,6 +33,6 @@ Compare multiple algorithms side-by-side for performance analysis.
 
 🛠 Tech Stack
 
-Frontend: HTML5, CSS3 (with vibrant UI), JavaScript (ES6)
+Frontend: HTML5, CSS3 (with vibrant UI), JavaScript 
 
-Backend: Python (Flask/Django for request handling & logic processing)
+Backend: Python (Flask for request handling & logic processing)
